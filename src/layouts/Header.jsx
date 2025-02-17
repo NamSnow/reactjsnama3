@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const NavbarLinks = () => {
   const links = [
@@ -8,8 +9,6 @@ const NavbarLinks = () => {
     { label: "Idea" },
     { label: "Career" },
   ];
-
-  const storedUser = JSON.parse(localStorage.getItem("user"));
 
   return (
     <ul className="d-flex m-0 list-unstyled">
@@ -27,6 +26,21 @@ const NavbarLinks = () => {
 };
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+  const storedUser = JSON.parse(localStorage.getItem("currentUser"));
+  const userName = storedUser?.name || null;
+
+  const [user, setUser] = useState(storedUser);
+
+  const logoutUser = () => {
+    localStorage.removeItem("currentUser");
+    setUser(null);
+    // navigate("/login");
+    window.location.href = "/login";
+  };
+
   return (
     <>
       <nav className="navbar align-items-center border-bottom">
@@ -74,13 +88,41 @@ const Header = () => {
             >
               Post
             </button>
-            <a
-              id="loginBtn"
-              href="/login"
-              className="btn btn-sm m-sm-2 m-1 bg-primary text-white rounded-5 px-sm-3 px-2"
-            >
-              Login
-            </a>
+            {userName ? (
+              <div className="dropdown" style={{ marginRight: "40px" }}>
+                <button
+                  className="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Xin chào, {userName}
+                </button>
+                <ul
+                  className="dropdown-menu"
+                  aria-labelledby="dropdownMenuButton1"
+                >
+                  <li>
+                    <button
+                      className="dropdown-item btn-outline-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                    >
+                      Đăng xuất
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <a
+                id="loginBtn"
+                href="/login"
+                className="btn btn-sm m-sm-2 m-1 bg-primary text-white rounded-5 px-sm-3 px-2"
+              >
+                Login
+              </a>
+            )}
           </div>
         </div>
       </nav>
@@ -105,6 +147,47 @@ const Header = () => {
           </div>
         </div>
       </nav>
+
+      <div
+        className="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">
+                Thông báo
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">Bạn có muốn đăng xuất không?</div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={logoutUser}
+              >
+                Đăng xuất
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

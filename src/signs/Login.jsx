@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -8,14 +8,18 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const storedUser = JSON.parse(localStorage.getItem("users"));
-    if (!storedUser) {
-      alert("Tài khoản chưa tồn tại");
-    } else if (storedUser.email === email && storedUser.pass === pass) {
+    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+    const itemUser = storedUsers.find(
+      (user) => user.email === email && user.pass === pass
+    );
+
+    if (!itemUser) {
+      alert("");
+    } else {
+      localStorage.setItem("currentUser", JSON.stringify(itemUser));
       alert("Đăng nhập thành công");
       navigate("/");
-    } else {
-      alert("Tài khoản hoặc mật khẩu không đúng");
     }
   };
 
@@ -30,6 +34,7 @@ const Login = () => {
         }}
         onSubmit={handleLogin}
       >
+        <a href="/">Quay lại</a>
         <h2 className="text-center mb-4">ĐĂNG NHẬP TÀI KHOẢN</h2>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">

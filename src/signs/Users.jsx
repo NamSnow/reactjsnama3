@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Users = () => {
   const [emailToDelete, setEmailToDelete] = useState(null);
@@ -48,13 +49,13 @@ const Users = () => {
                   >
                     Xóa
                   </a>
-                  <a
-                    href="/resetpass"
+                  <Link
+                    to="/resetpass"
                     className="btn btn-primary"
                     style={{ marginLeft: "10px" }}
                   >
                     Quên mật khẩu
-                  </a>
+                  </Link>
                 </td>
               </tr>
             ))

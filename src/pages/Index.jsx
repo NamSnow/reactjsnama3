@@ -1,16 +1,98 @@
 import React from "react";
 import DoiGioHu from "../assets/images/doigiohu.jpg";
+import { faCartPlus, faEye } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../assets/css/Index.css";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const library = [
     {
-      img: { DoiGioHu },
+      img: DoiGioHu,
       title: "Đồi gió hú",
       author: "Emily Bronte",
       yearPublication: "2023",
     },
     {
-      img: { DoiGioHu },
+      img: DoiGioHu,
+      title: "Đồi gió hú",
+      author: "Emily Bronte",
+      yearPublication: "2023",
+    },
+    {
+      img: DoiGioHu,
+      title: "Đồi gió hú",
+      author: "Emily Bronte",
+      yearPublication: "2023",
+    },
+    {
+      img: DoiGioHu,
+      title: "Đồi gió hú",
+      author: "Emily Bronte",
+      yearPublication: "2023",
+    },
+    {
+      img: DoiGioHu,
+      title: "Đồi gió hú",
+      author: "Emily Bronte",
+      yearPublication: "2023",
+    },
+    {
+      img: DoiGioHu,
+      title: "Đồi gió hú",
+      author: "Emily Bronte",
+      yearPublication: "2023",
+    },
+    {
+      img: DoiGioHu,
+      title: "Đồi gió hú",
+      author: "Emily Bronte",
+      yearPublication: "2023",
+    },
+    {
+      img: DoiGioHu,
+      title: "Đồi gió hú",
+      author: "Emily Bronte",
+      yearPublication: "2023",
+    },
+    {
+      img: DoiGioHu,
+      title: "Đồi gió hú",
+      author: "Emily Bronte",
+      yearPublication: "2023",
+    },
+    {
+      img: DoiGioHu,
+      title: "Đồi gió hú",
+      author: "Emily Bronte",
+      yearPublication: "2023",
+    },
+    {
+      img: DoiGioHu,
+      title: "Đồi gió hú",
+      author: "Emily Bronte",
+      yearPublication: "2023",
+    },
+    {
+      img: DoiGioHu,
+      title: "Đồi gió hú",
+      author: "Emily Bronte",
+      yearPublication: "2023",
+    },
+    {
+      img: DoiGioHu,
+      title: "Đồi gió hú",
+      author: "Emily Bronte",
+      yearPublication: "2023",
+    },
+    {
+      img: DoiGioHu,
+      title: "Đồi gió hú",
+      author: "Emily Bronte",
+      yearPublication: "2023",
+    },
+    {
+      img: DoiGioHu,
       title: "Đồi gió hú",
       author: "Emily Bronte",
       yearPublication: "2023",
@@ -19,21 +101,34 @@ const Index = () => {
 
   return (
     <div className="container mt-4">
-      <div className="card" style={{ width: "18rem", backgroundSize: "cover" }}>
-        <img
-          src={DoiGioHu}
-          className="card-img-top"
-          alt="..."
-          style={{ backgroundSize: "cover", height: "10rem" }}
-        ></img>
-        <div className="card-body">
-          <h5 className="card-title">Đồi gió hú</h5>
-          <p className="card-text">Emily Bronte</p>
-          <p>2023</p>
-          <a href="#" className="btn btn-primary">
-            Mua sản phẩm
-          </a>
-        </div>
+      <h2 className="text-center mb-4">Cửa Hàng Sách</h2>
+      <div className="row">
+        {library.map((item, index) => (
+          <div className="col-md-3 mb-4 col-4" key={index}>
+            <div className="product-card">
+              <img src={item.img} className="product-image" alt={item.title} />
+              <div className="product-body">
+                <h5 className="product-title">{item.title}</h5>
+                <p className="product-author">Tác giả: {item.author}</p>
+                <p className="product-year">
+                  Năm xuất bản: {item.yearPublication}
+                </p>
+                <div className="product-buttons">
+                  <Link
+                    to="/detailbook"
+                    state={item}
+                    className="btn btn-outline-primary"
+                  >
+                    <FontAwesomeIcon icon={faEye} /> Xem
+                  </Link>
+                  <a href="#" className="btn btn-outline-danger">
+                    <FontAwesomeIcon icon={faCartPlus} /> Mua
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -7,10 +7,12 @@ import Login from "./signs/Login.jsx";
 import Register from "./signs/Register.jsx";
 import Users from "./signs/Users.jsx";
 import ResetPass from "./signs/ResetPass.jsx";
+import DetailBook from "./pages/DetailBook.jsx";
 
 const App = () => {
   const routeApp = [
     { path: "/", element: <Index />, useLayout: true },
+    { path: "/detailbook", element: <DetailBook />, useLayout: true },
     { path: "/login", element: <Login />, useLayout: false },
     { path: "/register", element: <Register />, useLayout: false },
     { path: "/users", element: <Users />, useLayout: false },
