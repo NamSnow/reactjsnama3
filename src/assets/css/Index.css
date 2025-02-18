@@ -43,7 +43,8 @@ h2 {
 }
 
 .product-author,
-.product-year {
+.product-year,
+.product-quantity {
   font-size: 14px;
   color: #666;
   margin-bottom: 5px;

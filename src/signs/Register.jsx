@@ -47,6 +47,7 @@ const Register = () => {
       existingUsers.push(newUser);
 
       localStorage.setItem("users", JSON.stringify(existingUsers));
+      localStorage.setItem("currentUser", JSON.stringify(newUser));
       alert("Đăng ký thành công");
       navigate("/");
     }

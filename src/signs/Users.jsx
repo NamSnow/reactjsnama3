@@ -51,6 +51,7 @@ const Users = () => {
                   </a>
                   <Link
                     to="/resetpass"
+                    state={item}
                     className="btn btn-primary"
                     style={{ marginLeft: "10px" }}
                   >

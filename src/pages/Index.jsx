@@ -12,90 +12,105 @@ const Index = () => {
       title: "Đồi gió hú",
       author: "Emily Bronte",
       yearPublication: "2023",
+      quantity: "223",
     },
     {
       img: DoiGioHu,
       title: "Đồi gió hú",
       author: "Emily Bronte",
       yearPublication: "2023",
+      quantity: "203",
     },
     {
       img: DoiGioHu,
       title: "Đồi gió hú",
       author: "Emily Bronte",
       yearPublication: "2023",
+      quantity: "203",
     },
     {
       img: DoiGioHu,
       title: "Đồi gió hú",
       author: "Emily Bronte",
       yearPublication: "2023",
+      quantity: "023",
     },
     {
       img: DoiGioHu,
       title: "Đồi gió hú",
       author: "Emily Bronte",
       yearPublication: "2023",
+      quantity: "223",
     },
     {
       img: DoiGioHu,
       title: "Đồi gió hú",
       author: "Emily Bronte",
       yearPublication: "2023",
+      quantity: "2023",
     },
     {
       img: DoiGioHu,
       title: "Đồi gió hú",
       author: "Emily Bronte",
       yearPublication: "2023",
+      quantity: "2023",
     },
     {
       img: DoiGioHu,
       title: "Đồi gió hú",
       author: "Emily Bronte",
       yearPublication: "2023",
+      quantity: "2023",
     },
     {
       img: DoiGioHu,
       title: "Đồi gió hú",
       author: "Emily Bronte",
       yearPublication: "2023",
+      quantity: "2023",
     },
     {
       img: DoiGioHu,
       title: "Đồi gió hú",
       author: "Emily Bronte",
       yearPublication: "2023",
+      quantity: "2023",
     },
     {
       img: DoiGioHu,
       title: "Đồi gió hú",
       author: "Emily Bronte",
       yearPublication: "2023",
+      quantity: "2023",
     },
     {
       img: DoiGioHu,
       title: "Đồi gió hú",
       author: "Emily Bronte",
       yearPublication: "2023",
+      quantity: "2023",
     },
     {
       img: DoiGioHu,
       title: "Đồi gió hú",
       author: "Emily Bronte",
       yearPublication: "2023",
+      quantity: "2023",
     },
     {
       img: DoiGioHu,
       title: "Đồi gió hú",
       author: "Emily Bronte",
       yearPublication: "2023",
+      quantity: "2023",
     },
     {
       img: DoiGioHu,
       title: "Đồi gió hú",
       author: "Emily Bronte",
       yearPublication: "2023",
+      quantity: "2023",
     },
   ];
 
@@ -110,9 +125,6 @@ const Index = () => {
               <div className="product-body">
                 <h5 className="product-title">{item.title}</h5>
                 <p className="product-author">Tác giả: {item.author}</p>
-                <p className="product-year">
-                  Năm xuất bản: {item.yearPublication}
-                </p>
                 <div className="product-buttons">
                   <Link
                     to="/detailbook"

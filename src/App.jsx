@@ -2,21 +2,37 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import Index from "./pages/Index";
-import "./bs5.js";
+import "./assets/js/bs5.js";
 import Login from "./signs/Login.jsx";
 import Register from "./signs/Register.jsx";
 import Users from "./signs/Users.jsx";
 import ResetPass from "./signs/ResetPass.jsx";
 import DetailBook from "./pages/DetailBook.jsx";
+import PrivateRoute from "./errors/PrivateRoute.jsx";
 
 const App = () => {
   const routeApp = [
-    { path: "/", element: <Index />, useLayout: true },
-    { path: "/detailbook", element: <DetailBook />, useLayout: true },
-    { path: "/login", element: <Login />, useLayout: false },
-    { path: "/register", element: <Register />, useLayout: false },
-    { path: "/users", element: <Users />, useLayout: false },
-    { path: "/resetpass", element: <ResetPass />, useLayout: false },
+    { path: "/", element: <Index />, useLayout: true, isPrivate: false },
+    {
+      path: "/detailbook",
+      element: <DetailBook />,
+      useLayout: true,
+      isPrivate: true,
+    },
+    { path: "/login", element: <Login />, useLayout: false, isPrivate: false },
+    {
+      path: "/register",
+      element: <Register />,
+      useLayout: false,
+      isPrivate: false,
+    },
+    { path: "/users", element: <Users />, useLayout: false, isPrivate: false },
+    {
+      path: "/resetpass",
+      element: <ResetPass />,
+      useLayout: false,
+      isPrivate: false,
+    },
   ];
 
   return (
@@ -28,7 +44,15 @@ const App = () => {
               key={index}
               path={route.path}
               element={
-                route.useLayout ? (
+                route.isPrivate ? (
+                  <PrivateRoute>
+                    {route.useLayout ? (
+                      <Layout>{route.element}</Layout>
+                    ) : (
+                      route.element
+                    )}
+                  </PrivateRoute>
+                ) : route.useLayout ? (
                   <Layout>{route.element}</Layout>
                 ) : (
                   route.element
