@@ -1,5 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import "../assets/css/DetailBook.css";
 
 const DetailBook = () => {
   const location = useLocation();
@@ -7,45 +8,45 @@ const DetailBook = () => {
 
   if (!library) {
     return (
-      <div className="container mx-auto text-center py-10 text-gray-600">
-        Không có dữ liệu sách
+      <div className="container text-center py-5 text-muted">
+        <h4>Không có dữ liệu sách</h4>
       </div>
     );
   }
 
   return (
-    <div className="max-w-6xl mx-auto bg-white p-6 shadow-lg rounded-lg">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Hình ảnh sản phẩm */}
-        <div className="relative">
+    <div className="container mt-5">
+      <div className="row g-4 book-detail shadow-lg p-4 rounded">
+        {/* Hình ảnh sách */}
+        <div className="col-md-5 text-center">
           <img
             src={library.img}
             alt={library.title}
-            className="w-full h-auto rounded-lg shadow"
+            className="img-fluid rounded shadow-sm book-image"
           />
         </div>
 
         {/* Thông tin chi tiết */}
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900">{library.title}</h1>
-          <p className="text-gray-600 text-sm">Tác giả: {library.author}</p>
-          <p className="text-gray-600 text-sm">
-            Năm xuất bản: {library.yearPublication}
+        <div className="col-md-7">
+          <h1 className="fw-bold text-dark">{library.title}</h1>
+          <p className="text-muted">
+            Tác giả: <span className="fw-semibold">{library.author}</span>
           </p>
-          <p className="text-gray-600 text-sm mt-2">
-            Số lượng còn lại: {library.quantity}
+          <p className="text-muted">
+            Năm xuất bản:{" "}
+            <span className="fw-semibold">{library.yearPublication}</span>
+          </p>
+          <p className="text-muted">
+            Số lượng còn lại:{" "}
+            <span className="fw-semibold text-danger">{library.quantity}</span>
           </p>
 
-          {/* Giá tiền */}
-          <div className="mt-4 text-red-600 text-2xl font-bold">₫120.000</div>
-          <div className="text-gray-500 line-through text-sm">₫150.000</div>
-
-          {/* Nút mua hàng */}
-          <div className="mt-4 flex gap-4">
-            <button className="flex-1 py-2 px-4 border border-red-500 text-red-500 rounded-lg hover:bg-red-100 transition">
+          {/* Nút thao tác */}
+          <div className="mt-4 d-flex gap-3">
+            <button className="btn btn-outline-danger flex-grow-1 custom-btn">
               Thêm vào giỏ hàng
             </button>
-            <button className="flex-1 py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition">
+            <button className="btn btn-primary flex-grow-1 custom-btn custom-btn-buy">
               Mua ngay
             </button>
           </div>

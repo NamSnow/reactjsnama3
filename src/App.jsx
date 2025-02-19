@@ -9,6 +9,7 @@ import Users from "./signs/Users.jsx";
 import ResetPass from "./signs/ResetPass.jsx";
 import DetailBook from "./pages/DetailBook.jsx";
 import PrivateRoute from "./errors/PrivateRoute.jsx";
+import Cart from "./pages/Cart.jsx";
 
 const App = () => {
   const routeApp = [
@@ -16,6 +17,12 @@ const App = () => {
     {
       path: "/detailbook",
       element: <DetailBook />,
+      useLayout: true,
+      isPrivate: true,
+    },
+    {
+      path: "/cart",
+      element: <Cart />,
       useLayout: true,
       isPrivate: true,
     },
@@ -28,7 +35,7 @@ const App = () => {
     },
     { path: "/users", element: <Users />, useLayout: false, isPrivate: false },
     {
-      path: "/resetpass",
+      path: "/users/resetpass",
       element: <ResetPass />,
       useLayout: false,
       isPrivate: false,

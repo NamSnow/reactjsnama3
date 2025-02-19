@@ -1,0 +1,74 @@
+/* Tổng thể container */
+.container {
+  max-width: 900px;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+/* Chi tiết sách */
+.book-detail {
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+/* Hình ảnh sách */
+.book-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+.book-image:hover {
+  transform: scale(1.05);
+}
+
+/* Tiêu đề sách */
+h1 {
+  font-size: 28px;
+  color: #333;
+}
+
+/* Các thông tin chi tiết */
+p {
+  font-size: 16px;
+  color: #555;
+}
+
+.fw-semibold {
+  color: #212529;
+}
+
+.text-danger {
+  font-weight: bold;
+}
+
+/* Nút thao tác */
+.custom-btn {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s;
+  border-radius: 8px;
+}
+
+.custom-btn:hover {
+  opacity: 0.8;
+}
+
+.custom-btn-buy {
+  color: white;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .row.g-4 {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .custom-btn {
+    width: 100%;
+  }
+}

@@ -50,7 +50,7 @@ const Users = () => {
                     Xóa
                   </a>
                   <Link
-                    to="/resetpass"
+                    to="/users/resetpass"
                     state={item}
                     className="btn btn-primary"
                     style={{ marginLeft: "10px" }}

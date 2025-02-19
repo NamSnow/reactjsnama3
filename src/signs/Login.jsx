@@ -15,7 +15,7 @@ const Login = () => {
     );
 
     if (!itemUser) {
-      alert("");
+      alert("Vui lòng đăng nhập lại");
     } else {
       localStorage.setItem("currentUser", JSON.stringify(itemUser));
       alert("Đăng nhập thành công");
