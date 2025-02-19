@@ -19,6 +19,18 @@ const ResetPass = () => {
   };
 
   const handleSubCode = () => {
+    if (!pass) {
+      alert("Nhập mật khẩu để tiếp tục");
+      return;
+    }
+
+    const existingPasss = JSON.parse(localStorage.getItem("users"));
+
+    const updatedPasss = existingPasss.map((user) =>
+      user.email === storedUser.email ? { ...user, pass } : user
+    );
+
+    localStorage.setItem("users", JSON.stringify(updatedPasss));
     alert("Đổi mật khẩu thành công");
     navigate("/users");
   };

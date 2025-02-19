@@ -24,6 +24,7 @@ const Users = () => {
 
   return (
     <div className="container mt-4">
+      <Link to="/login">Login</Link>
       <table className="table">
         <thead>
           <tr>
@@ -95,7 +96,7 @@ const Users = () => {
                 ? `Tài khoản ${emailToDelete} sẽ bị xóa vĩnh viễn. Xóa chứ?`
                 : `Không có tài khoản đc chọn. `}
             </div>
-            <div class="modal-footer">
+            <div className="modal-footer">
               <button
                 type="button"
                 className="btn btn-secondary"
