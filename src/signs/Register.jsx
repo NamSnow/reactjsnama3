@@ -120,7 +120,7 @@ const Register = () => {
             id="exampleCheck1"
           />
           <label className="form-check-label" htmlFor="exampleCheck1">
-            Remember me
+            Chấp nhận điều khoản của chúng tôi
           </label>
         </div>
         <div className="text-center mb-3">

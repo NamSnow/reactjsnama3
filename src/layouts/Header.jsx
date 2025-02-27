@@ -67,7 +67,7 @@ const Header = () => {
               <input
                 className="searchInput bg-body-tertiary iconCursor ps-md-5 p-1 p-md-2"
                 type="search"
-                placeholder="Search Rides"
+                placeholder="Search sách"
                 aria-label="Search"
               />
             </div>

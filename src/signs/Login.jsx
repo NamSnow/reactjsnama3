@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -8,6 +12,12 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+
+    if (!email || !pass) {
+      alert("Bạn chưa nhập email hoặc pass");
+      return;
+    }
+
     const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
 
     const itemUser = storedUsers.find(
@@ -15,7 +25,9 @@ const Login = () => {
     );
 
     if (!itemUser) {
-      alert("Vui lòng đăng nhập lại");
+      alert("Email chx đăng ký");
+    } else if (!itemUser.pass !== pass) {
+      alert("Mật khẩu chưa chính xác");
     } else {
       localStorage.setItem("currentUser", JSON.stringify(itemUser));
       alert("Đăng nhập thành công");
@@ -67,7 +79,7 @@ const Login = () => {
             id="exampleCheck1"
           />
           <label className="form-check-label" htmlFor="exampleCheck1">
-            Remember me
+            Chấp nhận điều khoản của chúng tôi
           </label>
         </div>
         <div className="text-center mb-3">
@@ -82,6 +94,31 @@ const Login = () => {
         <button type="submit" className="btn btn-primary w-100">
           Đăng nhập
         </button>
+
+        <div style={{ textAlign: "center" }} className="mt-4">
+          Hoặc đăng nhập bằng
+        </div>
+
+        <div className="d-flex justify-content-evenly mt-4">
+          <Link>
+            <FontAwesomeIcon
+              icon={faFacebook}
+              style={{ color: "blue", height: "30px" }}
+            />
+          </Link>
+          <Link>
+            <FontAwesomeIcon
+              icon={faGoogle}
+              style={{ color: "red", height: "30px" }}
+            />
+          </Link>
+          <Link>
+            <FontAwesomeIcon
+              icon={faGithub}
+              style={{ color: "orange", height: "30px" }}
+            />
+          </Link>
+        </div>
       </form>
     </div>
   );
