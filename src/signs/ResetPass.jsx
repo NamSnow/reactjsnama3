@@ -18,26 +18,39 @@ const ResetPass = () => {
     setShowForm2(false);
   };
 
-  const handleSubCode = () => {
-    if (!pass) {
+  const handleSubCode = (e) => {
+    e.preventDefault();
+
+    if (!pass.trim()) {
       alert("Nhập mật khẩu để tiếp tục");
       return;
     }
 
-    const existingPasss = JSON.parse(localStorage.getItem("users"));
+    // Lấy danh sách người dùng từ localStorage
+    let users = JSON.parse(localStorage.getItem("users")) || [];
 
-    const updatedPasss = existingPasss.map((user) =>
-      user.email === storedUser.email ? { ...user, pass } : user
-    );
+    // Kiểm tra xem email có tồn tại không
+    let userIndex = users.findIndex((user) => user.email === storedUser.email);
 
-    localStorage.setItem("users", JSON.stringify(updatedPasss));
+    if (userIndex === -1) {
+      alert("Không tìm thấy tài khoản.");
+      return;
+    }
+
+    // Cập nhật mật khẩu
+    users[userIndex].password = pass;
+
+    // Lưu lại vào localStorage
+    localStorage.setItem("users", JSON.stringify(users));
+
+    console.log("Updated users:", JSON.parse(localStorage.getItem("users")));
     alert("Đổi mật khẩu thành công");
     navigate("/users");
   };
 
   return (
-    <div className="vh-100  bg-dark">
-      <div className="card p-4 bg-dark text-white">
+    <div className="vh-100 bg-dark">
+      <div className="card p-4 bg-dark text-white" style={{ width: "100vw" }}>
         <h3 className="text-center mb-4">Reset Password</h3>
 
         {/* Form xác nhận email */}
@@ -63,7 +76,7 @@ const ResetPass = () => {
 
         {/* Form đặt lại mật khẩu */}
         {showForm2 && (
-          <form>
+          <form onSubmit={handleSubCode}>
             <div className="mb-3">
               <label htmlFor="password" className="form-label">
                 Nhập mật khẩu mới
@@ -74,6 +87,7 @@ const ResetPass = () => {
                 id="password"
                 value={pass}
                 onChange={(e) => setPass(e.target.value)}
+                required
               />
             </div>
             <div className="d-flex justify-content-between">
@@ -84,11 +98,7 @@ const ResetPass = () => {
               >
                 Quay lại
               </button>
-              <button
-                type="submit"
-                className="btn btn-success"
-                onClick={handleSubCode}
-              >
+              <button type="submit" className="btn btn-success">
                 Cập nhật mật khẩu
               </button>
             </div>

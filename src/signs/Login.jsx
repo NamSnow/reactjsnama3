@@ -20,13 +20,11 @@ const Login = () => {
 
     const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
 
-    const itemUser = storedUsers.find(
-      (user) => user.email === email && user.pass === pass
-    );
+    const itemUser = storedUsers.find((user) => user.email === email);
 
     if (!itemUser) {
       alert("Email chx đăng ký");
-    } else if (!itemUser.pass !== pass) {
+    } else if (itemUser.pass !== pass) {
       alert("Mật khẩu chưa chính xác");
     } else {
       localStorage.setItem("currentUser", JSON.stringify(itemUser));
